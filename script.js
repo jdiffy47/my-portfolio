@@ -1,25 +1,34 @@
 const nav = document.querySelector(".nav");
 const navMenu = document.querySelector(".nav-items");
+const slideInMenu = document.querySelector(".slide-in-menu");
 const btnToggleNav = document.querySelector(".menu-btn");
 const workEls = document.querySelectorAll(".work-box");
 const workImgs = document.querySelectorAll(".work-img");
 const mainEl = document.querySelector("main");
 
 const toggleNav = () => {
-  nav.classList.toggle("hidden");
+  // nav.classList.toggle("hidden");
+
+  slideInMenu.classList.toggle("slide-in-show");
 
   // Prevent screen from scrolling when menu is opened
   document.body.classList.toggle("lock-screen");
 
-  if (nav.classList.contains("hidden")) {
-    btnToggleNav.textContent = "menu";
+  if (slideInMenu.classList.contains("slide-in-show")) {
+    btnToggleNav.textContent = "close";
   } else {
-    // When menu is opened after transition change text respectively
-    setTimeout(() => {
-      btnToggleNav.textContent = "close";
-    }, 475);
+    btnToggleNav.textContent = "menu";
   }
 };
+
+  // if (nav.classList.contains("hidden")) {
+  //   btnToggleNav.textContent = "menu";
+  // } else {
+  //   // When menu is opened after transition change text respectively
+  //   setTimeout(() => {
+  //     btnToggleNav.textContent = "close";
+  //   }, 475);
+  // }
 
 btnToggleNav.addEventListener("click", toggleNav);
 
@@ -30,10 +39,16 @@ navMenu.addEventListener("click", (e) => {
 });
 
 document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !nav.classList.contains("hidden")) {
+  if (e.key === "Escape" && slideInMenu.classList.contains("slide-in-show")) {
     toggleNav();
   }
 });
+
+// document.body.addEventListener("keydown", (e) => {
+//   if (e.key === "Escape" && !nav.classList.contains("hidden")) {
+//     toggleNav();
+//   }
+// });
 
 // Animating work instances on scroll
 

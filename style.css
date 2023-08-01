@@ -501,6 +501,47 @@ main {
   transform: scale(1);
 }
 
+.slide-in-menu {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 80%; /* Adjust the width as needed */
+  max-width: 300px; /* Limit the maximum width */
+  height: 100vh;
+  background: linear-gradient(to right, #222, #444);
+  /* background-color: #ff5e99;
+  background-image: var(--gradient-brand); */
+  transition: left 0.3s ease; /* Use transition for smooth sliding */
+  z-index: 3;
+}
+
+.slide-in-items {
+  margin-top: 20%; /* Adjust the margin as needed */
+  list-style-type: none;
+  text-align: center;
+}
+
+.slide-in-item:not(:last-child) {
+  margin-bottom: 1rem; /* Adjust the margin as needed */
+}
+
+.slide-in-item a {
+  display: block;
+  font-size: var(--h2);
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.slide-in-item a:hover {
+  color: #f9e5d0;
+}
+/* Show the slide-in menu when the appropriate class is added */
+.slide-in-show {
+  left: 0;
+}
+
+
 /* --------------------------------- */
 /* ----- Header -----*/
 /* --------------------------------- */
