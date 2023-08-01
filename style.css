@@ -502,14 +502,14 @@ main {
 /* Styles for mobile (viewport width < 768px) */
 @media (max-width: 767px) {
   .nav {
+    display: none;
     position: static; /* Change 'static' to 'fixed' if you want the nav to be fixed on mobile */
     display: flex;
     justify-content: center;
-    margin-top: 20px;
   }
 
   .nav-items {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
