@@ -88,12 +88,6 @@ html {
 
 /* Ensure that our site is accessible to users who may have vestibular disorders */
 
-/* @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-} */
-
 @media (max-width: 1200px) {
   html {
     font-size: 90%;
@@ -456,13 +450,11 @@ main {
 /* ----- Navigation -----*/
 /* --------------------------------- */
 
+/* Common styles for both mobile and desktop */
 .nav {
-  position: fixed; /* Change 'fixed' to 'sticky' if you want a hybrid behavior */
-  top: 10px;
-  right: 20px;
   z-index: 1000;
-  background-color: transparent; /* Change to your desired background color */
-  transition: background-color 0.3s ease; /* Add a smooth transition effect if needed */
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
 
 .nav-items {
@@ -472,8 +464,8 @@ main {
 }
 
 .nav-item {
-  display: inline-block;
-  margin-right: 20px;
+  display: block; /* Change this to 'inline-block' for items to be in a row */
+  margin-bottom: 10px; /* Add spacing between items, adjust as needed */
 }
 
 .nav-item a {
@@ -483,130 +475,53 @@ main {
   font-weight: bold;
 }
 
-.nav.sticky {
-  background-color: #333; /* Change to your desired background color when sticky */
-  padding: 10px 20px; /* Add some padding when sticky to make the background visible */
+/* Styles for desktop (viewport width >= 768px) */
+@media (min-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+  }
+
+  .nav.sticky {
+    background-color: #333;
+    padding: 10px 20px;
+  }
+
+  .nav-item {
+    display: inline-block; /* Display items in a row */
+    margin-right: 20px;
+    margin-bottom: 0; /* Reset the bottom margin */
+  }
+
+  .nav-item a:hover {
+    color: #e0e0e0;
+  }
 }
 
-/* Add hover styles if you want to change the color on hover */
-.nav-item a:hover {
-  color: #e0e0e0; /* Change to your desired hover color */
+/* Styles for mobile (viewport width < 768px) */
+@media (max-width: 767px) {
+  .nav {
+    position: static; /* Change 'static' to 'fixed' if you want the nav to be fixed on mobile */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-item {
+    display: block; /* Display items in a column on mobile */
+    margin-right: 0; /* Reset the right margin */
+    margin-bottom: 10px; /* Add spacing between items on mobile */
+  }
 }
 
-
-/* .nav {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.nav-items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.nav-item a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-} */
-
-/* Add hover styles if you want to change the color on hover */
-/* .nav-item a:hover {
-  color: #e0e0e0; 
-} */
-
-/* .nav {
-  min-block-size: 100vh;
-  position: fixed;
-  width: 100%;
-  background-color: #ff5e99;
-  background-image: var(--gradient-brand);
-  transition: 450ms var(--easing);
-  z-index: 3;
-}
-
-.nav-items {
-  position: absolute;
-  top: 50%;
-  left: 15%;
-  transform: translateY(-50%) translateX(-15%);
-  list-style-type: none;
-}
-
-.nav-item:not(:last-child) {
-  margin-block-end: var(--gutter-x-small);
-}
-
-.nav-item a {
-  display: inline-block;
-  font-size: var(--h2);
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-item a::after {
-  content: "";
-  display: block;
-  block-size: var(--gutter-nano);
-  width: 100%;
-  transform: scale(0);
-  transform-origin: left;
-  background-color: white;
-  transition: transform 250ms var(--easing);
-}
-
-.nav-item a:hover::after,
-.nav-item a:focus::after {
-  transform: scale(1);
-} */
-
-/* .slide-in-menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 80%; 
-  max-width: 300px; 
-  height: 100vh;
-  background: linear-gradient(to right, #222, #444);
-  background-image: var(--gradient-brand);
-  transition: left 0.3s ease; 
-  z-index: 3;
-}
-
-.slide-in-items {
-  margin-top: 20%;
-  list-style-type: none;
-  text-align: center;
-}
-
-.slide-in-item:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
-.slide-in-item a {
-  display: block;
-  font-size: var(--h2);
-  text-decoration: none;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.slide-in-item a:hover {
-  color: #f9e5d0;
-}
-
-.slide-in-show {
-  left: 0;
-} */
 
 
 /* --------------------------------- */
