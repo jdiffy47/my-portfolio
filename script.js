@@ -1,23 +1,55 @@
 const nav = document.querySelector(".nav");
 const navMenu = document.querySelector(".nav-items");
-const slideInMenu = document.querySelector(".slide-in-menu");
 const btnToggleNav = document.querySelector(".menu-btn");
 const workEls = document.querySelectorAll(".work-box");
 const workImgs = document.querySelectorAll(".work-img");
 const mainEl = document.querySelector("main");
+const navOffsetTop = nav.offsetTop;
 
-const toggleNav = () => {
-  // nav.classList.toggle("hidden");
+// const toggleNav = () => {
+//   // nav.classList.toggle("hidden");
 
-  slideInMenu.classList.toggle("slide-in-show");
+//   slideInMenu.classList.toggle("slide-in-show");
 
-  // Prevent screen from scrolling when menu is opened
-  document.body.classList.toggle("lock-screen");
+//   // Prevent screen from scrolling when menu is opened
+//   document.body.classList.toggle("lock-screen");
 
-  if (slideInMenu.classList.contains("slide-in-show")) {
-    btnToggleNav.textContent = "close";
+//   if (slideInMenu.classList.contains("slide-in-show")) {
+//     btnToggleNav.textContent = "close";
+//   } else {
+//     btnToggleNav.textContent = "menu";
+//   }
+// };
+
+// const closeNavOnClick = (e) => {
+//   if (e.target.localName === "a") {
+//     const targetElementID = e.target.getAttribute("href");
+//     if (targetElementID && targetElementID !== "#" && targetElementID.startsWith("#")) {
+//       toggleNav();
+//       scrollToElement(targetElementID);
+//     }
+//   }
+// };
+
+
+function updateNavStickyState() {
+  if (window.scrollY > navOffsetTop) {
+    nav.classList.add("sticky");
   } else {
-    btnToggleNav.textContent = "menu";
+    nav.classList.remove("sticky");
+  }
+}
+
+window.addEventListener("scroll", updateNavStickyState);
+
+const scrollToElement = (target) => {
+  const targetElement = document.querySelector(target);
+  if (targetElement) {
+    const offsetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+    window.scroll({
+      top: offsetTop,
+      behavior: "smooth",
+    });
   }
 };
 
@@ -30,25 +62,32 @@ const toggleNav = () => {
   //   }, 475);
   // }
 
-btnToggleNav.addEventListener("click", toggleNav);
+// btnToggleNav.addEventListener("click", toggleNav);
+// slideInMenu.addEventListener("click", closeNavOnClick);
 
-navMenu.addEventListener("click", (e) => {
-  if (e.target.localName === "a") {
-    toggleNav();
-  }
-});
+// navMenu.addEventListener("click", (e) => {
+//   if (e.target.localName === "a") {
+//     toggleNav();
+//   }
+// });
 
-document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && slideInMenu.classList.contains("slide-in-show")) {
-    toggleNav();
-  }
-});
+// document.body.addEventListener("keydown", (e) => {
+//   if (e.key === "Escape" && slideInMenu.classList.contains("slide-in-show")) {
+//     toggleNav();
+//   }
+// });
 
 // document.body.addEventListener("keydown", (e) => {
 //   if (e.key === "Escape" && !nav.classList.contains("hidden")) {
 //     toggleNav();
 //   }
 // });
+
+document.body.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && nav.classList.contains("hidden")) {
+    toggleNav();
+  }
+});
 
 // Animating work instances on scroll
 
